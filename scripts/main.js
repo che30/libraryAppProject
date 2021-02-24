@@ -59,6 +59,9 @@ function display(index) {
   let lib = JSON.parse(localStorage.getItem("myLibrary"));
     const container = document.getElementById("libraryInfo");
     const bookDiv = document.createElement('div');
+    bookDiv.classList.add('d-flex');
+    bookDiv.classList.add('justify-content-around');
+    bookDiv.classList.add('mt-5');
     const newTitle = document.createElement('h3');
     newTitle.className ="book-title";
     const newAuthor = document.createElement('h4');

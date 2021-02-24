@@ -5,18 +5,26 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+<link rel="stylesheet" href="/assets/stylesheets/main.css">
   <title>Library app</title>
 </head>
 <body>
-    <form  >
+  <h3 class="text-center ">Library</h3>
+    <form >
+   <div class="my-3 ">
     <input type="text" id="inputTitle" placeholder="enter title">
-    <input type="text" id="inputAuthor" placeholder="enter author">
+   </div>
+<div class="my-3 ">
+  <input type="text" id="inputAuthor" placeholder="enter author">
+</div>
+   <div >
     <input type="number" id="inputPages" placeholder="Pages Here...">
-    <button type="button"id ="btnInsert">Submit</button>
+   </div>
+    <button  type="button"id ="btnInsert">Submit</button>
   </form>
+  <p>Book list</p>
   <div id="libraryInfo">
-    <h3>Library</h3>
+    
   </div>
     <script src="/scripts/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
