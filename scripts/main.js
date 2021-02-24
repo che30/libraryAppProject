@@ -20,17 +20,15 @@ const inputTitle = document.getElementById('inputTitle').value;
 const inputAuthor = document.getElementById('inputAuthor').value
 const inputPages = document.getElementById('inputPages').value
 const libraryInfo = document.getElementById('libraryInfo')
+let curentId = Number(localStorage.getItem('lastBookId'))
 if(inputTitle!='' && inputAuthor!='' && inputPages !='')
-{ let curentId = Number(localStorage.getItem('lastBookId'))
-if (curentId ==null)
-{
-  localStorage.setItem('lastBookId', 0);
-  curentId = 0;
-}else{
-  curentId += 1;
-}
+{ 
+  
   if (localStorage.getItem('myLibrary')==null)
-  {
+  { 
+     if (curentId==null)
+    {localStorage.setItem('lastBookId', 0);
+    curentId = 0;}
    
     let book = new Book(inputTitle,inputAuthor,inputPages,curentId)
     myLibrary.push(book)
@@ -38,11 +36,15 @@ if (curentId ==null)
     
     display(curentId)
   }else{
+    if (curentId != null) {
+      curentId = Number(localStorage.getItem('lastBookId'))
+      curentId +=1
+      localStorage.setItem('lastBookId', curentId);
+    }
 
     let  old_book = JSON.parse(localStorage.getItem('myLibrary'))
-    // currentId =old_book[currentId].id
-    // currentId =currentId+1
     let newBook = new Book(inputTitle, inputAuthor,inputPages,curentId);
+    myLibrary.push(old_book)
     old_book.push(newBook);
     localStorage.setItem('myLibrary', JSON.stringify(old_book))
     display(curentId)
@@ -78,7 +80,7 @@ function display(index) {
     bookDiv.appendChild(newPages);
     container.appendChild(bookDiv);
      let button = document.createElement("button");
-    button.id= lib[index].id;
+    button.id= index;
      button.setAttribute("onclick",`removeItem(${button.id})`);
      let remove = document.createTextNode("remove");
      bookDiv.appendChild(button);
@@ -88,15 +90,16 @@ function display(index) {
   function removeItem(itemid)
   {
     let lib = JSON.parse(localStorage.getItem("myLibrary"));
-    const retrievedId = document.getElementById(itemid).id;
-    console.log(retrievedId)
-    lib_ar = lib.map(lib_ar => lib_ar.id);
-   let index = lib_ar.findIndex(book => book == retrievedId);
-   const deleted =lib.splice(index,1);
-   localStorage.setItem('myLibrary', JSON.stringify(lib))
-   localStorage.removeItem('deleted')
+    const newlib = lib.filter(item =>{
+      return  item.itemid !== item
+    })
+    localStorage.setItem('myLibrary',JSON.stringify(newlib))
+    // const retrievedId = document.getElementById(itemid).id;
+    //   console.log(temp)
+      document.getElementById(itemid).parentNode.remove()
+    
   //  setTimeout(function()
   //  { location.reload(); }, 5000);
 
   }
-  // localStorage.clear()
+   //localStorage.clear()
