@@ -1,19 +1,18 @@
 let myLibrary = []
-function Book(title, author, pages,id) {
+function Book(title, author, pages,id,status) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.id =id
+  this.status = status
 }
 
 let btnInsert = document.getElementById('btnInsert')
 btnInsert.addEventListener('click', (e) =>{
-  // console.log(localStorage.getItem('myLibrary'))
   createBook()
   document.forms[0].reset();
   e.preventDefault();
 })
-// let curentId=0
 function createBook()
 {
 const inputTitle = document.getElementById('inputTitle').value;
@@ -30,7 +29,7 @@ if(inputTitle!='' && inputAuthor!='' && inputPages !='')
     {localStorage.setItem('lastBookId', 0);
     curentId = 0;}
    
-    let book = new Book(inputTitle,inputAuthor,inputPages,curentId)
+    let book = new Book(inputTitle,inputAuthor,inputPages,curentId,false)
     myLibrary.push(book)
     localStorage.setItem('myLibrary', JSON.stringify(myLibrary))
     
@@ -43,14 +42,11 @@ if(inputTitle!='' && inputAuthor!='' && inputPages !='')
     }
 
     let  old_book = JSON.parse(localStorage.getItem('myLibrary'))
-    let newBook = new Book(inputTitle, inputAuthor,inputPages,curentId);
+    let newBook = new Book(inputTitle, inputAuthor,inputPages,curentId,false);
     myLibrary.push(old_book)
     old_book.push(newBook);
     localStorage.setItem('myLibrary', JSON.stringify(old_book))
     display(curentId)
-  //   setTimeout(function(){
-  //     window.location.reload();
-  // }, 60000);
 
 
 
@@ -63,13 +59,21 @@ function display(index) {
   let lib = JSON.parse(localStorage.getItem("myLibrary"));
     const container = document.getElementById("libraryInfo");
     const bookDiv = document.createElement('div');
-    // bookDiv.setAttribute("id",index);
     const newTitle = document.createElement('h3');
     newTitle.className ="book-title";
     const newAuthor = document.createElement('h4');
     newAuthor.className = "author";
     const newPages = document.createElement('p');
+    const dFlex = document.createElement('div');
+    dFlex.className = "d-flex"
+    const status = document.createElement('button')
+    status.className = "status"
+    status.classList.add("bg-primary")
+    status.id= 's'+index
+    status.setAttribute("onclick",`changeStatus(${index})`)
+    status.innerText = "read book"
     newPages.className = "nbpages";
+
 
     newTitle.innerText = lib[index].title;
     newAuthor.innerText = lib[index].author;
@@ -83,9 +87,22 @@ function display(index) {
     button.id= index;
      button.setAttribute("onclick",`removeItem(${button.id})`);
      let remove = document.createTextNode("remove");
-     bookDiv.appendChild(button);
+     dFlex.appendChild(status);
+     dFlex.appendChild(button)
+     bookDiv.appendChild(dFlex);
      button.appendChild(remove);
    
+  }
+  function changeStatus(statusId){
+    console.log(statusId )
+    let lib = JSON.parse(localStorage.getItem("myLibrary"));
+    const retrievedId = document.getElementById('s'+statusId);
+    const retrievedId2 = document.getElementById(statusId)
+    retrievedId.className ="bg-success"
+    retrievedId.innerHTML = "read"
+    lib[statusId].status = true 
+    localStorage.setItem('myLibrary',JSON.stringify(lib))
+      console.log(lib[statusId])
   }
   function removeItem(itemid)
   {
@@ -94,12 +111,7 @@ function display(index) {
       return  item.itemid !== item
     })
     localStorage.setItem('myLibrary',JSON.stringify(newlib))
-    // const retrievedId = document.getElementById(itemid).id;
-    //   console.log(temp)
       document.getElementById(itemid).parentNode.remove()
-    
-  //  setTimeout(function()
-  //  { location.reload(); }, 5000);
 
   }
    //localStorage.clear()
