@@ -94,7 +94,6 @@ function display(index) {
    
   }
   function changeStatus(statusId){
-    console.log(statusId )
     let lib = JSON.parse(localStorage.getItem("myLibrary"));
     const retrievedId = document.getElementById('s'+statusId);
     const retrievedId2 = document.getElementById(statusId)
@@ -102,7 +101,6 @@ function display(index) {
     retrievedId.innerHTML = "read"
     lib[statusId].status = true 
     localStorage.setItem('myLibrary',JSON.stringify(lib))
-      console.log(lib[statusId])
   }
   function removeItem(itemid)
   {
