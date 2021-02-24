@@ -109,7 +109,7 @@ function display(index) {
       return  item.itemid !== item
     })
     localStorage.setItem('myLibrary',JSON.stringify(newlib))
-      document.getElementById(itemid).parentNode.remove()
+      document.getElementById(itemid).parentNode.parentNode.remove()
 
   }
    //localStorage.clear()
