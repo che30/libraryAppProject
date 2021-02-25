@@ -1,25 +1,21 @@
+/* eslint-disable import/extensions */
+import Book from './dom.js';
+
 const myLibrary = [];
-function Book(title, author, pages, id, status) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.id = id;
-  this.status = status;
-}
-function removeItem(itemid) {
-  const lib = JSON.parse(localStorage.getItem('myLibrary'));
-  const newlib = lib.filter(item => item.itemid !== item);
-  localStorage.setItem('myLibrary', JSON.stringify(newlib));
-  document.getElementById(itemid).parentNode.parentNode.remove();
-}
-function changeStatus(statusId) {
+window.changeStatus = (statusId) => {
   const lib = JSON.parse(localStorage.getItem('myLibrary'));
   const retrievedId = document.getElementById(`s${statusId}`);
   retrievedId.className = 'bg-success';
   retrievedId.innerHTML = 'read';
   lib[statusId].status = true;
   localStorage.setItem('myLibrary', JSON.stringify(lib));
-}
+};
+window.removeItem = (itemid) => {
+  const lib = JSON.parse(localStorage.getItem('myLibrary'));
+  const newlib = lib.filter(item => item.itemid !== item);
+  localStorage.setItem('myLibrary', JSON.stringify(newlib));
+  document.getElementById(itemid).parentNode.parentNode.remove();
+};
 function display(index) {
   const lib = JSON.parse(localStorage.getItem('myLibrary'));
   const container = document.getElementById('libraryInfo');
@@ -38,7 +34,7 @@ function display(index) {
   status.className = 'status';
   status.classList.add('bg-primary');
   status.id = `s${index}`;
-  status.setAttribute('onclick', changeStatus(index));
+  status.setAttribute('onclick', `changeStatus(${index})`);
   status.innerText = 'read book';
   newPages.className = 'nbpages';
 
@@ -52,8 +48,9 @@ function display(index) {
   bookDiv.appendChild(newPages);
   container.appendChild(bookDiv);
   const button = document.createElement('button');
+  button.setAttribute('type', 'button');
   button.id = index;
-  button.setAttribute('onclick', removeItem(button.id));
+  button.setAttribute('onclick', `removeItem(${button.id})`);
   const remove = document.createTextNode('remove');
   dFlex.appendChild(status);
   dFlex.appendChild(button);
@@ -102,4 +99,4 @@ btnInsert.addEventListener('click', (e) => {
 });
 
 
-// localStorage.clear()
+localStorage.clear();
