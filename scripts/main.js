@@ -23,28 +23,27 @@ function display(index) {
   bookDiv.classList.add('d-flex');
   bookDiv.classList.add('justify-content-around');
   bookDiv.classList.add('mt-5');
-  bookDiv.classList.add('bg-success')
-  bookDiv.classList.add('py-3')
-  bookDiv.style.cssText = 'width:95% alig-items-baseline align-content-baseline%'
+  bookDiv.classList.add('bg-success');
+  bookDiv.classList.add('py-3');
+  bookDiv.style.cssText = 'width:95% alig-items-baseline align-content-baseline%';
   const newTitle = document.createElement('h3');
   newTitle.className = 'book-title';
-  newTitle.classList.add('text-white')
+  newTitle.classList.add('text-white');
   const newAuthor = document.createElement('h4');
   newAuthor.className = 'author';
-  newAuthor.classList.add('text-white')
+  newAuthor.classList.add('text-white');
   const newPages = document.createElement('p');
   newPages.className = 'text-white';
-  newPages.classList.add('ml-5')
+  newPages.classList.add('ml-5');
   const dFlex = document.createElement('div');
-  dFlex.style.cssText='width:10%;'
-  dFlex.classList.add('text-right')
+  dFlex.style.cssText = 'width:10%;';
+  dFlex.classList.add('text-right');
   const status = document.createElement('button');
   status.className = 'status';
   status.classList.add('bg-primary');
   status.id = `s${index}`;
   status.setAttribute('onclick', `changeStatus(${index})`);
   status.innerText = 'read book';
- 
 
 
   newTitle.innerText = lib[index].title;
