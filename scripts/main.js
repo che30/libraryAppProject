@@ -5,7 +5,7 @@ const myLibrary = [];
 window.changeStatus = (statusId) => {
   const lib = JSON.parse(localStorage.getItem('myLibrary'));
   const retrievedId = document.getElementById(`s${statusId}`);
-  retrievedId.className = 'bg-success';
+  retrievedId.className = 'bg-danger';
   retrievedId.innerHTML = 'read';
   lib[statusId].status = true;
   localStorage.setItem('myLibrary', JSON.stringify(lib));
@@ -23,13 +23,19 @@ function display(index) {
   bookDiv.classList.add('d-flex');
   bookDiv.classList.add('justify-content-around');
   bookDiv.classList.add('mt-5');
+  bookDiv.classList.add('bg-success')
+  bookDiv.classList.add('py-3')
   const newTitle = document.createElement('h3');
   newTitle.className = 'book-title';
+  newTitle.classList.add('text-white')
   const newAuthor = document.createElement('h4');
   newAuthor.className = 'author';
+  newAuthor.classList.add('text-white')
   const newPages = document.createElement('p');
+  newPages.className ='text-white';
   const dFlex = document.createElement('div');
-  dFlex.className = 'd-flex';
+  dFlex.classList.add('w-25');
+  dFlex.classList.add('text-right')
   const status = document.createElement('button');
   status.className = 'status';
   status.classList.add('bg-primary');
