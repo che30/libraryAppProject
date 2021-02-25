@@ -104,6 +104,3 @@ btnInsert.addEventListener('click', (e) => {
   document.forms[0].reset();
   e.preventDefault();
 });
-
-
-localStorage.clear();
