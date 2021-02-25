@@ -25,6 +25,7 @@ function display(index) {
   bookDiv.classList.add('mt-5');
   bookDiv.classList.add('bg-success')
   bookDiv.classList.add('py-3')
+  bookDiv.style.cssText = 'width:95% alig-items-baseline align-content-baseline%'
   const newTitle = document.createElement('h3');
   newTitle.className = 'book-title';
   newTitle.classList.add('text-white')
@@ -32,9 +33,10 @@ function display(index) {
   newAuthor.className = 'author';
   newAuthor.classList.add('text-white')
   const newPages = document.createElement('p');
-  newPages.className ='text-white';
+  newPages.className = 'text-white';
+  newPages.classList.add('ml-5')
   const dFlex = document.createElement('div');
-  dFlex.classList.add('w-25');
+  dFlex.style.cssText='width:10%;'
   dFlex.classList.add('text-right')
   const status = document.createElement('button');
   status.className = 'status';
@@ -42,7 +44,7 @@ function display(index) {
   status.id = `s${index}`;
   status.setAttribute('onclick', `changeStatus(${index})`);
   status.innerText = 'read book';
-  newPages.className = 'nbpages';
+ 
 
 
   newTitle.innerText = lib[index].title;
