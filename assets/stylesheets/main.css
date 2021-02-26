@@ -2,6 +2,7 @@ input {
   padding: 7px;
   height: 40px;
   width: 70%;
+   margin-left: 15%; 
 }
 
 .f2 {
@@ -19,11 +20,19 @@ form {
   padding: 10px 0 10px 0;
   border-radius: 20px;
 }
+.b-1 {
+  margin-left: 45%;
+  align-self: center;
+  background: blueviolet;
+  color: white;
+  border-radius: 10px;
+}
 
-button {
+.b-2 {
   width: 71%;
   align-self: center;
   background: blueviolet;
   color: white;
   border-radius: 10px;
+  margin-left: 15%;
 }
