@@ -15,7 +15,7 @@ function display() {
     bookDiv.classList.add('mt-5');
     bookDiv.classList.add('bg-success');
     bookDiv.classList.add('py-3');
-    bookDiv.style.cssText = 'width:95%; alig-items-baseline; align-content-baseline%';
+    bookDiv.style.cssText = ' alig-items-baseline; align-content-baseline%';
     const newTitle = document.createElement('h3');
     newTitle.className = 'book-title';
     newTitle.classList.add('text-white');
