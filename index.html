@@ -5,33 +5,36 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" href="./assets/stylesheets/main.css">
   <title>Library app</title>
 </head>
 <body>
-  <button id="h1" class="text-center mt-5 mb-2 text-white b-1">Create Library</button>
-    <form id="f1" class="d-flex flex-column text-center">
-   <div class="mt-3 mb-2 ">
-    <input type="text" id="inputTitle" placeholder="enter title">
-   </div>
-<div class="my-3 ">
-  <input type="text" id="inputAuthor" placeholder="enter author">
-</div>
-   <div >
-    <input type="number" id="inputPages" placeholder="Pages Here...">
-   </div>
-    <button class="mt-3 mb-3 py-2 b-2"  type="button"id ="btnInsert">Submit</button>
-  </form>
-  <h3 class="text-center text-white mt-2">Book list</h3>
-  <div class="book-list d-flex text-white justify-content-around">
-    <div> book title </div>
-    <div> book author</div>
-    <div> number of pages</div>
-    <div> status</div>
+  <div class="container mt-4">
+    <h1 class="display-4 text-center">
+      <i class="fas fa-book-open text-primary"></i> My<span class="text-primary">Book</span>List</h1>
+   <div class="text-center">   <button id="b1" class="rounded-circle btn-primary p-2">Add book</button></div>
+      <form id="book-form">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" id="title" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="author">Author</label>
+          <input type="text" id="author" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="nbpages">nbpages</label>
+          <input type="number" id="nbpages" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="isbn">ISBN#</label>
+          <input type="text" id="isbn" class="form-control">
+        </div>
+        <input type="submit" value="Add Book" class="btn btn-primary btn-block">
+      </form>
+
+        <div id="book-list"></div>
   </div>
-  <div id="libraryInfo">
-    
-  </div>
+
     <script type="module" src="./scripts/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
