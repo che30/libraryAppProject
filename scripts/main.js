@@ -32,6 +32,7 @@ function addBookToList(book) {
   bookContainer.className = 'card';
   const bookBody = document.createElement('div');
   bookBody.className = 'card-body';
+  bookBody.classList.add('border', 'border-dark','rounded');
   const bookTitle = document.createElement('h5');
   bookTitle.className = 'card-title';
   const bookAuthor = document.createElement('p');
@@ -124,8 +125,9 @@ window.removeBook = (bookid) => {
   }, 3000);
   displayBooks();
 };
-// Event: Change Status If Book Read
 document.addEventListener('DOMContentLoaded', displayBooks());
+
+// Event: Change Status If Book Read
 window.changeStatus = (statusId) => {
   const books = getBooks();
   const retrievedId = document.getElementById(`s${statusId}`);
@@ -139,10 +141,10 @@ window.changeStatus = (statusId) => {
 document.querySelector('#book-form').addEventListener('submit', (e) => {
   // Prevent actual submit
   e.preventDefault();
-  const title = document.querySelector('#title').value;
-  const author = document.querySelector('#author').value;
-  const isbn = document.querySelector('#isbn').value;
-  const nbpages = document.querySelector('#nbpages').value;
+  const title = 'title: '+ document.querySelector('#title').value;
+  const author ='author: ' + document.querySelector('#author').value;
+  const isbn ='isbn: '+ document.querySelector('#isbn').value;
+  const nbpages ='pages: ' + document.querySelector('#nbpages').value;
   if (title === '' || author === '' || isbn === '' || nbpages === '') {
     showAlert('Please fill in all fields', 'danger');
   } else {
