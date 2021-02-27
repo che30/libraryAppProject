@@ -116,7 +116,6 @@ window.removeBook = (bookid) => {
       books.splice(index, 1);
     }
   });
-  // const newlib = books.filter(item => item.itemid !== item);
   document.getElementById(bookid).parentNode.parentNode.parentNode.remove();
   localStorage.setItem('books', JSON.stringify(books));
   showAlert('Book Removed', 'success');
