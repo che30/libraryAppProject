@@ -32,7 +32,7 @@ function addBookToList(book) {
   bookContainer.className = 'card';
   const bookBody = document.createElement('div');
   bookBody.className = 'card-body';
-  bookBody.classList.add('border', 'border-dark','rounded');
+  bookBody.classList.add('border', 'border-dark', 'rounded');
   const bookTitle = document.createElement('h5');
   bookTitle.className = 'card-title';
   const bookAuthor = document.createElement('p');
@@ -140,10 +140,10 @@ window.changeStatus = (statusId) => {
 document.querySelector('#book-form').addEventListener('submit', (e) => {
   // Prevent actual submit
   e.preventDefault();
-  const title = 'title: '+ document.querySelector('#title').value;
-  const author ='author: ' + document.querySelector('#author').value;
-  const isbn ='isbn: '+ document.querySelector('#isbn').value;
-  const nbpages ='pages: ' + document.querySelector('#nbpages').value;
+  const title = `title: ${document.querySelector('#title').value}`;
+  const author = `author: ${document.querySelector('#author').value}`;
+  const isbn = `isbn: ${document.querySelector('#isbn').value}`;
+  const nbpages = `pages: ${document.querySelector('#nbpages').value}`;
   if (title === '' || author === '' || isbn === '' || nbpages === '') {
     showAlert('Please fill in all fields', 'danger');
   } else {
