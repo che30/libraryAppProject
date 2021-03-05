@@ -42,7 +42,7 @@ function addBookToList(book) {
   const isbn = document.createElement('p');
   isbn.className = 'card-text';
   const buttonContainer = document.createElement('div');
-  buttonContainer.classList.add('d-flex', 'justify-content-between');
+  buttonContainer.classList.add('d-flex','flex-wrap', 'justify-content-between','w-75');
   const status = document.createElement('button');
   status.className = 'bg-success';
   const read = document.createTextNode('read');
