@@ -125,6 +125,9 @@ window.removeBook = (bookid) => {
   localStorage.setItem('books', JSON.stringify(books));
   displayBooks();
   showAlert('Book Removed', 'success');
+  setTimeout(() => {
+    window.location.reload();
+  }, 3000);
 };
 document.addEventListener('DOMContentLoaded', displayBooks());
 
@@ -157,6 +160,9 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
     showAlert('Book Added', 'success');
     clearFields();
     displayBooks(book);
+    setTimeout(() => {
+      window.location.reload();
+    }, 3000);
   }
 });
 
