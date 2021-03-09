@@ -15,16 +15,19 @@ h1.addEventListener('click', () => {
     f1.className = 'd-none';
   }
 });
-function getBooks() {
-  let books;
-  if (localStorage.getItem('books') === null) {
-    books = [];
-  } else {
-    books = JSON.parse(localStorage.getItem('books'));
-  }
+class UI {
+  static getBooks() {
+    let books;
+    if (localStorage.getItem('books') === null) {
+      books = [];
+    } else {
+      books = JSON.parse(localStorage.getItem('books'));
+    }
 
-  return books;
+    return books;
+  }
 }
+
 function addBookToList(book) {
   const bookList = document.querySelector('#book-list');
   bookList.classList.add('d-flex', 'justify-content-around', 'mt-3');
@@ -42,7 +45,7 @@ function addBookToList(book) {
   const isbn = document.createElement('p');
   isbn.className = 'card-text';
   const buttonContainer = document.createElement('div');
-  buttonContainer.classList.add('d-flex','flex-wrap', 'justify-content-between','w-75');
+  buttonContainer.classList.add('d-flex', 'flex-wrap', 'justify-content-between', 'w-75');
   const status = document.createElement('button');
   status.className = 'bg-success';
   const read = document.createTextNode('read');
@@ -85,13 +88,15 @@ function countBook() {
   return currentNumber;
 }
 function displayBooks() {
-  const books = getBooks();
+  const bookList = document.getElementById('book-list');
+  bookList.innerHTML = '';
+  const books = UI.getBooks();
 
   books.forEach((book) => addBookToList(book));
 }
 
 function storeBook(book) {
-  const books = getBooks();
+  const books = UI.getBooks();
   books.push(book);
   localStorage.setItem('books', JSON.stringify(books));
 }
@@ -110,7 +115,7 @@ function showAlert(message, className) {
   container.insertBefore(div, form);
 }
 window.removeBook = (bookid) => {
-  const books = getBooks();
+  const books = UI.getBooks();
   books.forEach((book, index) => {
     if (book.id === bookid) {
       books.splice(index, 1);
@@ -118,17 +123,14 @@ window.removeBook = (bookid) => {
   });
   document.getElementById(bookid).parentNode.parentNode.parentNode.remove();
   localStorage.setItem('books', JSON.stringify(books));
-  showAlert('Book Removed', 'success');
-  setTimeout(() => {
-    window.location.reload();
-  }, 3000);
   displayBooks();
+  showAlert('Book Removed', 'success');
 };
 document.addEventListener('DOMContentLoaded', displayBooks());
 
 // Event: Change Status If Book Read
 window.changeStatus = (statusId) => {
-  const books = getBooks();
+  const books = UI.getBooks();
   const retrievedId = document.getElementById(`s${statusId}`);
   retrievedId.className = 'bg-primary';
   retrievedId.innerHTML = 'book read';
@@ -154,9 +156,6 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
     storeBook(book);
     showAlert('Book Added', 'success');
     clearFields();
-    setTimeout(() => {
-      window.location.reload();
-    }, 1000);
     displayBooks(book);
   }
 });
