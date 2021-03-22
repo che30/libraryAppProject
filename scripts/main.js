@@ -28,10 +28,12 @@ class UI {
   }
 }
 const bookList = document.querySelector('#book-list');
-bookList.classList.add('d-flex', 'justify-content-around', 'mt-3');
-const bookContainer = document.createElement('div');
+bookList.classList.add('d-flex', 'justify-content-around', 'mt-3','flex-wrap');
+
 function addBookToList(book) {
+  const bookContainer = document.createElement('div');
   bookContainer.className = 'card';
+  bookContainer.classList.add('mt-2')
   const bookBody = document.createElement('div');
   bookBody.className = 'card-body';
   bookBody.classList.add('border', 'border-dark', 'rounded');
