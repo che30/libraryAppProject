@@ -27,11 +27,10 @@ class UI {
     return books;
   }
 }
-
+const bookList = document.querySelector('#book-list');
+bookList.classList.add('d-flex', 'justify-content-around', 'mt-3');
+const bookContainer = document.createElement('div');
 function addBookToList(book) {
-  const bookList = document.querySelector('#book-list');
-  bookList.classList.add('d-flex', 'justify-content-around', 'mt-3');
-  const bookContainer = document.createElement('div');
   bookContainer.className = 'card';
   const bookBody = document.createElement('div');
   bookBody.className = 'card-body';
@@ -45,7 +44,7 @@ function addBookToList(book) {
   const isbn = document.createElement('p');
   isbn.className = 'card-text';
   const buttonContainer = document.createElement('div');
-  buttonContainer.classList.add('d-flex', 'flex-wrap', 'justify-content-between', 'w-75');
+  buttonContainer.classList.add('d-flex', 'flex-wrap', 'justify-content-around');
   const status = document.createElement('button');
   status.className = 'bg-success';
   const read = document.createTextNode('read');
